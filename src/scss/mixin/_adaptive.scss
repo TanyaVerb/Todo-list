@@ -3,7 +3,6 @@
   @if ($media== "large") {
     //1280 экран
     @media screen and (max-width: $large) {
-      //передается 430px
       @content;
     }
   } @else if ($media== "middle") {
