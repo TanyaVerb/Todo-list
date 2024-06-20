@@ -1,0 +1,30 @@
+.form {
+  &-container {
+    padding: 10px 25px;
+    max-width: 500px;
+    border: 2px solid $border-color;
+    border-radius: 5%;
+    background-color: $bg-color-white;
+    @include respond-to("middle") {
+      max-width: 430px;
+    }
+    @include respond-to("mobile") {
+      max-width: 300px;
+    }
+  }
+  &__title {
+    color: $border-color;
+    font-size: $title-large;
+    text-align: center;
+    font-weight: 700;
+    @include respond-to("middle") {
+      font-size: $title-middle;
+    }
+    @include respond-to("mobile") {
+      font-size: $title-mobile;
+    }
+    //768 до х fs = 2.5rem
+
+    //до 768 = 2 rem
+  }
+}
