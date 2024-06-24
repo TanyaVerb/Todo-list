@@ -23,8 +23,83 @@
     @include respond-to("mobile") {
       font-size: $title-mobile;
     }
-    //768 до х fs = 2.5rem
+  }
+  &__field {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: $text-large;
 
-    //до 768 = 2 rem
+    &-label {
+      color: $label-color;
+      text-align: start;
+    }
+    &-input {
+      color: $input-color;
+      height: 50px;
+      width: 100%;
+      border: 1.5px solid #7a7a7a;
+      border-radius: 15px;
+      padding: 0 10px;
+
+      @include respond-to("middle") {
+        height: 40px;
+        font-size: $text-middle;
+      }
+      @include respond-to("mobile") {
+        height: 35px;
+        font-size: $text-mobile;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 4px 1px $label-color;
+        border: 1.5px solid $label-color;
+      }
+      &::placeholder {
+        color: $border-color;
+      }
+    }
+    @include respond-to("middle") {
+      font-size: $text-middle;
+    }
+    @include respond-to("mobile") {
+      font-size: $text-mobile;
+    }
+
+    &.invalid {
+      .form__field-label {
+        color: $invalid-color;
+      }
+      .form__field-input {
+        color: $invalid-color;
+        border: 1.5px solid $invalid-color;
+        box-shadow: 0 0 4px 1px $invalid-color;
+      }
+    }
+  }
+  &__btn {
+    background-color: $label-color;
+    color: $bg-color-white;
+    margin: 0 auto;
+  }
+  &__notice {
+    color: $border-color;
+    font-size: $text-large;
+    margin-top: 15px;
+
+    @include respond-to("middle") {
+      font-size: $text-middle;
+    }
+    @include respond-to("mobile") {
+      font-size: $text-mobile;
+    }
+  }
+  &__link {
+    color: $secondary-btn-color;
+    font-style: inherit;
+    text-decoration: none;
+    &:hover {
+      color: $invalid-color;
+    }
   }
 }

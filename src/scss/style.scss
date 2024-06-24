@@ -5,6 +5,8 @@
 
 //глобальные переменные вверху
 @import "./constants/global-variable";
+
+@import "./components/button";
 @import "./pages/authorization";
 html {
   height: 100%;
@@ -19,4 +21,8 @@ html {
   body {
     height: 100%;
   }
+}
+
+.hide {
+  display: none !important;
 }
