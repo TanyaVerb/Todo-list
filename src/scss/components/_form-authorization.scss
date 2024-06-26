@@ -26,10 +26,9 @@
   }
   &__field {
     margin-bottom: 15px;
+    font-size: $text-large;
     display: flex;
     flex-direction: column;
-    font-size: $text-large;
-
     &-label {
       color: $label-color;
       text-align: start;
@@ -38,17 +37,17 @@
       color: $input-color;
       height: 50px;
       width: 100%;
-      border: 1.5px solid #7a7a7a;
+      font-size: $text-large;
+      border: 1.5px solid $border-color;
       border-radius: 15px;
       padding: 0 10px;
-
       @include respond-to("middle") {
-        height: 40px;
         font-size: $text-middle;
+        height: 40px;
       }
       @include respond-to("mobile") {
-        height: 35px;
         font-size: $text-mobile;
+        height: 35px;
       }
       &:focus {
         outline: none;
@@ -65,7 +64,6 @@
     @include respond-to("mobile") {
       font-size: $text-mobile;
     }
-
     &.invalid {
       .form__field-label {
         color: $invalid-color;
@@ -86,7 +84,6 @@
     color: $border-color;
     font-size: $text-large;
     margin-top: 15px;
-
     @include respond-to("middle") {
       font-size: $text-middle;
     }
@@ -96,7 +93,7 @@
   }
   &__link {
     color: $secondary-btn-color;
-    font-style: inherit;
+    font-size: inherit;
     text-decoration: none;
     &:hover {
       color: $invalid-color;

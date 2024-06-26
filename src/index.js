@@ -1,5 +1,4 @@
-import { PageAutorization } from "./components/page-authorization.component.js";
+import { PageAuthorization } from "./components/page-authorization.component.js";
 
-const component1 = new PageAutorization("sign-up");
-
+const component1 = new PageAuthorization("login");
 console.log(component1);

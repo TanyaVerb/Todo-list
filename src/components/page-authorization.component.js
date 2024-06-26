@@ -1,29 +1,28 @@
 import { Component } from "../core/component.js";
 
-export class PageAutorization extends Component {
+//наследуется от родителя Component
+export class PageAuthorization extends Component {
   constructor(id) {
+    // прокидываем id в constructor родителя
     super(id);
-    console.log(this.component);
-    this.init();
-    console.log(this.links);
   }
 
   init() {
+    // инициализируем формы
     this.signIn = new Component("sign-in");
     this.signUp = new Component("sign-up");
+    // получаем ссылки
     this.links = this.component.querySelectorAll(".form__link");
+    // навешиваем слушатели событий
     this.links.forEach((link) => {
-      //приявязали this к экз
-      link.addEventListener("click", onCHangeFormHandler.bind(this));
+      link.addEventListener("click", onChangeFormHandler.bind(this));
     });
   }
 }
 
-function onCHangeFormHandler(event) {
+function onChangeFormHandler(event) {
+  // функция переключения форм с Sign-in на Sign-up и обратно
   event.preventDefault();
-  console.log(this);
-  console.log(this.signIn);
-  console.log(this.signUp);
   if (event.target.classList.contains("link-in")) {
     this.signUp.hide();
     this.signIn.show();

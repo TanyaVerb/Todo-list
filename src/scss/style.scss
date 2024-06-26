@@ -2,10 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,400;1,700&display=swap");
 @import "./mixin/adaptive";
 @import "./constants/font-size";
-
 //глобальные переменные вверху
 @import "./constants/global-variable";
-
 @import "./components/button";
 @import "./pages/authorization";
 html {
