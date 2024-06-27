@@ -1,4 +1,5 @@
 import { Component } from "../core/component.js";
+import { SignInComponent } from "./sign-in.components.js";
 
 //наследуется от родителя Component
 export class PageAuthorization extends Component {
@@ -9,14 +10,18 @@ export class PageAuthorization extends Component {
 
   init() {
     // инициализируем формы
-    this.signIn = new Component("sign-in");
+    this.signIn = new SignInComponent("sign-in");
     this.signUp = new Component("sign-up");
     // получаем ссылки
     this.links = this.component.querySelectorAll(".form__link");
+
     // навешиваем слушатели событий
     this.links.forEach((link) => {
       link.addEventListener("click", onChangeFormHandler.bind(this));
     });
+
+    // this.component.addEventListener("click", onChangeFormHandler.bind(this));
+    // })
   }
 }
 
@@ -25,6 +30,7 @@ function onChangeFormHandler(event) {
 
   //отмена действия браузера по умолчанию
   event.preventDefault();
+  event.stopPropagation();
   if (event.target.classList.contains("link-in")) {
     this.signUp.hide();
     this.signIn.show();
