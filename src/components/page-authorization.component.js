@@ -22,6 +22,8 @@ export class PageAuthorization extends Component {
 
 function onChangeFormHandler(event) {
   // функция переключения форм с Sign-in на Sign-up и обратно
+
+  //отмена действия браузера по умолчанию
   event.preventDefault();
   if (event.target.classList.contains("link-in")) {
     this.signUp.hide();
