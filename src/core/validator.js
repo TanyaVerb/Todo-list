@@ -1,13 +1,14 @@
 export class Validator {
+  //метод проверяет не явл.ли ПУСТОЙ строка или строкой,сост.из пробелов
   static required(str = "") {
     console.log("required", str);
-    return str && str.trim();
+    return str && str.trim(); //проверка(не явл.ли строка null или undefined)
   }
 
   static isEmailValid(value = "") {
     console.log(value);
 
-    let arrayFromStr = value.trim().split("");
+    let arrayFromStr = value.trim().split(""); //split(разбиение строки на массив)
 
     for (let i = 0; i < arrayFromStr.length; i++) {
       if (arrayFromStr[i] === " ") {
@@ -16,6 +17,7 @@ export class Validator {
     }
 
     if (!value.includes("@")) return false;
+
     return value.trim();
   }
 
@@ -46,11 +48,11 @@ export class Validator {
         counter.uppercaseLetter++;
       }
     });
-
+    //Проверяет, не равно ли нулю значение каждого ключа в counter. Если хотя бы одно значение равно нулю, метод возвращает false.
     for (let key in counter) {
       if (counter[key] === 0) return false;
     }
-    return value;
+    return value; //возвращает строку
   }
 }
 
