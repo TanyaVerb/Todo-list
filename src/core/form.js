@@ -32,11 +32,59 @@ export class Form {
       });
 
       isValid
-        ? console.log(`Инпут под названием тега name -${field} Валидно`)
-        : console.log(`Инпут под названием тега name -${field} НЕ Валидно`);
+        ? clearNoticeError(this.form[field])
+        : setNoticeError(this.form[field]);
 
       isFormValid = isValid && isFormValid;
     });
     return isFormValid;
+  }
+
+  clear() {
+    Object.keys(this.controls).forEach((field) => {
+      this.form[field].value = "";
+      clearNoticeError(this.form[field]);
+    });
+  }
+}
+
+const requiredErrorText = "Field is required";
+const userEmailText = "Field is required(at least:@ symbol)";
+const userPasswordText =
+  "Field is required(at least:1 uppercase letter and 1 digit)";
+
+function setNoticeError(input) {
+  clearNoticeError(input);
+
+  console.log(input.parentElement);
+  input.parentElement.classList.add("invalid");
+
+  const fieldName = input.getAttribute("name");
+
+  if (fieldName === "name") {
+    input.insertAdjacentHTML("afterend", setErrorText(requiredErrorText));
+  }
+  if (fieldName === "email") {
+    input.insertAdjacentHTML("afterend", setErrorText(userEmailText));
+  }
+  if (fieldName === "password") {
+    input.dataset.signIn === "sign-in"
+      ? input.insertAdjacentHTML("afterend", setErrorText(requiredErrorText))
+      : input.insertAdjacentHTML("afterend", setErrorText(userPasswordText));
+  }
+}
+
+function setErrorText(text) {
+  return `<p class= "form__field-warning">${text}</p>`;
+}
+
+function clearNoticeError(input) {
+  //если ошибка есть то будем проводить очистку
+
+  if (input.nextSibling) {
+    if (input.closest(".form__field")) {
+      input.closest(".form__field").removeChild(input.nextSibling);
+      input.parentElement.classList.remove("invalid");
+    }
   }
 }

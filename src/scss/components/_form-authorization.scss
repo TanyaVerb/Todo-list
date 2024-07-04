@@ -58,6 +58,7 @@
         color: $border-color;
       }
     }
+
     @include respond-to("middle") {
       font-size: $text-middle;
     }
@@ -72,6 +73,10 @@
         color: $invalid-color;
         border: 1.5px solid $invalid-color;
         box-shadow: 0 0 4px 1px $invalid-color;
+      }
+      .form__field-warning {
+        color: $invalid-color;
+        font-size: $sub-text-mobile;
       }
     }
   }

@@ -11,8 +11,12 @@ export class SignInComponent extends Component {
     this.component.addEventListener("submit", onSubmitHandler.bind(this));
     this.form = new Form(this.component, {
       name: [Validator.required], //
-      password: [Validator.required, Validator.isPasswordValid],
+      password: [Validator.required],
     });
+  }
+
+  onHide() {
+    this.form.clear();
   }
 }
 

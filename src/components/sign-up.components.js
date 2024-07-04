@@ -1,7 +1,7 @@
 import { Component } from "../core/component.js";
 import { Form } from "../core/form.js";
 import { Validator } from "../core/validator.js";
-import { onSubmitHandler } from "./sign-in.components.js";
+// import { onSubmitHandler } from "./sign-in.components.js";
 
 export class SigUpComponent extends Component {
   constructor(formId) {
@@ -16,14 +16,18 @@ export class SigUpComponent extends Component {
       password: [Validator.required, Validator.isPasswordValid],
     });
   }
+
+  onHide() {
+    this.form.clear();
+  }
 }
 
 //this - это форма
 
 //вызывается при изменении значений в форме
 
-// function onSubmitHandler(event) {
-//   event.preventDefault(); //Предотвращает стандартное поведение отправки формы
-//   console.log(this.form.value());
-//   console.log(this.form.isValid());
-// }
+function onSubmitHandler(event) {
+  event.preventDefault(); //Предотвращает стандартное поведение отправки формы
+  console.log(this.form.value());
+  console.log(this.form.isValid());
+}
