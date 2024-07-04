@@ -1,5 +1,6 @@
 import { Component } from "../core/component.js";
 import { SignInComponent } from "./sign-in.components.js";
+import { SigUpComponent } from "./sign-up.components.js";
 
 //наследуется от родителя Component
 export class PageAuthorization extends Component {
@@ -11,7 +12,7 @@ export class PageAuthorization extends Component {
   init() {
     // инициализируем формы
     this.signIn = new SignInComponent("sign-in");
-    this.signUp = new Component("sign-up");
+    this.signUp = new SigUpComponent("sign-up");
     // получаем ссылки
     this.links = this.component.querySelectorAll(".form__link");
 

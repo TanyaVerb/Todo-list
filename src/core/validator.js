@@ -1,6 +1,6 @@
 export class Validator {
   static required(str = "") {
-    console.log("requared", str);
+    console.log("required", str);
     return str && str.trim();
   }
 
@@ -26,7 +26,8 @@ export class Validator {
       uppercaseLetter: 0,
     };
 
-    let arrayFromStr = value.trim().split("");
+    const arrayFromStr = value.trim().split("");
+
     arrayFromStr.forEach((symbol) => {
       if (typeof symbol === "string" && !isFinite(symbol)) {
         counter.letter++;
