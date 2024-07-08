@@ -1,6 +1,7 @@
 import { Component } from "../core/component.js";
 import { Form } from "../core/form.js";
 import { Validator } from "../core/validator.js";
+import { Storage } from "../core/storage.js";
 
 export class SigUpComponent extends Component {
   constructor(formId) {
@@ -27,6 +28,23 @@ export class SigUpComponent extends Component {
 
 function onSubmitHandler(event) {
   event.preventDefault(); //Предотвращает стандартное поведение отправки формы
-  console.log(this.form.value());
-  console.log(this.form.isValid());
+
+  //проверяем валидна ли форма
+  if (this.form.isValid()) {
+    //усли форма валидна - создаем пользователя
+    const formData = {
+      id: new Date().getTime(),
+      ...this.form.value(),
+    };
+
+    // {
+    //   name:
+    //   email:
+    //   password
+    // }
+    console.log(formData);
+    Storage.createNewUser(formData);
+    //очищаем форму после создания пользователя
+    // this.form.clear();
+  }
 }
