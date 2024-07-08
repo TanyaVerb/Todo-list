@@ -1,7 +1,6 @@
 import { Component } from "../core/component.js";
 import { Form } from "../core/form.js";
 import { Validator } from "../core/validator.js";
-// import { onSubmitHandler } from "./sign-in.components.js";
 
 export class SigUpComponent extends Component {
   constructor(formId) {

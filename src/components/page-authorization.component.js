@@ -20,9 +20,6 @@ export class PageAuthorization extends Component {
     this.links.forEach((link) => {
       link.addEventListener("click", onChangeFormHandler.bind(this));
     });
-
-    // this.component.addEventListener("click", onChangeFormHandler.bind(this));
-    // })
   }
 }
 
@@ -31,7 +28,6 @@ function onChangeFormHandler(event) {
 
   //отмена действия браузера по умолчанию
   event.preventDefault();
-  event.stopPropagation();
   if (event.target.classList.contains("link-in")) {
     this.signUp.hide();
     this.signIn.show();

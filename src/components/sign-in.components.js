@@ -19,13 +19,11 @@ export class SignInComponent extends Component {
     this.form.clear();
   }
 }
-
 //this - это форма
 
 //вызывается при изменении значений в форме
-
-export function onSubmitHandler(event) {
+function onSubmitHandler(event) {
   event.preventDefault(); //Предотвращает стандартное поведение отправки формы
-  console.log(this.form.value());
+
   console.log(this.form.isValid());
 }

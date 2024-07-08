@@ -50,7 +50,7 @@ export class Form {
 
 const requiredErrorText = "Field is required";
 const userEmailText = "Field is required(at least:@ symbol)";
-const userPasswordText =
+const passwordErrorText =
   "Field is required(at least:1 uppercase letter and 1 digit)";
 
 function setNoticeError(input) {
@@ -68,23 +68,24 @@ function setNoticeError(input) {
     input.insertAdjacentHTML("afterend", setErrorText(userEmailText));
   }
   if (fieldName === "password") {
+    console.log(input.dataset.signIn);
+
     input.dataset.signIn === "sign-in"
       ? input.insertAdjacentHTML("afterend", setErrorText(requiredErrorText))
-      : input.insertAdjacentHTML("afterend", setErrorText(userPasswordText));
+      : input.insertAdjacentHTML("afterend", setErrorText(passwordErrorText));
+  }
+}
+
+function clearNoticeError(input) {
+  //если ошибка есть, то будем проводить очистку
+  if (input.nextElementSibling) {
+    if (input.closest(".form__field")) {
+      input.closest(".form__field").removeChild(input.nextElementSibling);
+      input.parentElement.classList.remove("invalid");
+    }
   }
 }
 
 function setErrorText(text) {
   return `<p class= "form__field-warning">${text}</p>`;
-}
-
-function clearNoticeError(input) {
-  //если ошибка есть то будем проводить очистку
-
-  if (input.nextSibling) {
-    if (input.closest(".form__field")) {
-      input.closest(".form__field").removeChild(input.nextSibling);
-      input.parentElement.classList.remove("invalid");
-    }
-  }
 }

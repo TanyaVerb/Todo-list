@@ -65,6 +65,7 @@
     @include respond-to("mobile") {
       font-size: $text-mobile;
     }
+    //.form__field.invalid
     &.invalid {
       .form__field-label {
         color: $invalid-color;

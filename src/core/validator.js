@@ -6,9 +6,7 @@ export class Validator {
   }
 
   static isEmailValid(value = "") {
-    console.log(value);
-
-    let arrayFromStr = value.trim().split(""); //split(разбиение строки на массив)
+    const arrayFromStr = value.trim().split(""); //split(разбиение строки на массив)
 
     for (let i = 0; i < arrayFromStr.length; i++) {
       if (arrayFromStr[i] === " ") {
