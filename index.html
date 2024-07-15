@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="one"></div>
-    <section class="page-authorization" id="login">
+    <section class="page-authorization hide" id="login">
       <div class="page-authorization-container">
         <form class="form hide" id="sign-up">
           <div class="form-container">
@@ -89,11 +89,105 @@
       </div>
     </section>
 
+    <section class="application" id="page-content">
+      <header class="header" id="header">
+        <div class="header-container">
+          <h1 class="header-title">Todo list Application</h1>
+          <button class="header__btn btn id= 'header-btn">Logout</button>
+        </div>
+      </header>
+      <main class="application__content" id="main">
+        <h2 class="application__title">
+          Welcome,<span class="application__title-name" id="welcome">Sveta</span
+          >, here are you tasks
+        </h2>
+        <div class="application__controls">
+          <form class="application__form-search form-search" id="search">
+            <div class="form-search__field">
+              <input
+                class="form-search__field-input"
+                type="search"
+                name="title"
+                placeholder="Search by title"
+              />
+            </div>
+            <div class="form-search__field">
+              <select class="form-search__field-select" name="status">
+                <option
+                  class="form-search__field-select-option"
+                  value="all"
+                  selected
+                >
+                  All
+                </option>
+                <option
+                  class="form-search__field-select-option"
+                  value="processing"
+                >
+                  In Processing
+                </option>
+                <option class="form-search__field-select-option" value="done">
+                  Completed
+                </option>
+              </select>
+            </div>
+          </form>
+          <div class="todos application_todos">
+            <div class="todos-container">
+              <div class="todos__item todos__item_done">
+                <div class="todos__item-status"></div>
+                <p class="todos__item-title">Some title</p>
+                <div class="todos__item-edit"></div>
+                <div class="todos__item-remove"></div>
+              </div>
+            </div>
+          </div>
+          <div class="application__theme theme">
+            <div class="theme__field">
+              <select class="theme__field-select" name="theme" id="theme">
+                <option class="theme__field-select-option" value="gray">
+                  Gray
+                </option>
+                <option class="theme__field-select-option" value="yellow">
+                  Yellow
+                </option>
+                <option class="theme__field-select-option" value="red" selected>
+                  Red
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button class="btn application__btn" id="create-btn"></button>
+      </main>
+    </section>
+
+    <div class="modal" id="edit">
+      <form class="modal-container">
+        <h2 class="modal__title">Edit</h2>
+        <div class="modal__field">
+          <input
+            class="modal__field-input"
+            type="text"
+            name="title"
+            placeholder="Title..."
+          />
+        </div>
+        <div class="modal__field">
+          <textarea
+            class="modal__field-textarea"
+            type="text"
+            name="description"
+            placeholder="Description..."
+          >
+        </div>
+        
+        <button class="modal__btn btn" type="submit">Save</button>
+      </form>
+    </div>
+
     <div id="notification" class="notification hide">
-      <span class="notification__text"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est,
-        laborum.</span
-      >
+      <span class="notification__text"></span>
     </div>
 
     <script type="module" src="./src/index.js"></script>

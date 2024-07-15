@@ -6,8 +6,5 @@ console.log(Validator.isEmailValid("tE@"));
 console.log(Validator.isPasswordValid("so me1   !tE  "));
 
 const loginPage = new PageAuthorization("login");
-console.log(loginPage);
 
 export const notification = new Notification("notification");
-
-console.log(notification);
