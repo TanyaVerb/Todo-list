@@ -10,10 +10,10 @@
     font-size: $title-large;
     color: $border-color;
     margin: 0 auto;
-    @include respont-to("middle") {
+    @include respond-to("middle") {
       font-size: $title-middle;
     }
-    @include respont-to("mobile") {
+    @include respond-to("mobile") {
       font-size: $title-middle;
     }
   }
@@ -22,11 +22,11 @@
     height: 50px;
     border-radius: 20px;
     font-size: $text-large;
-    background-color: $border-color-white;
-    @include respont-to("middle") {
+    background-color: $bg-color-white;
+    @include respond-to("middle") {
       font-size: $text-middle;
     }
-    @include respont-to("mobile") {
+    @include respond-to("mobile") {
       font-size: $text-mobile;
     }
   }
