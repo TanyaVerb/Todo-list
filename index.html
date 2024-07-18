@@ -91,7 +91,7 @@
 
     <section class="application" id="page-content">
       <header class="header" id="header">
-        <div class="header-contener">
+        <div class="header-container">
           <h1 class="header__title">Todo List Application</h1>
           <button class="header__btn btn" id="header-btn">Logout</button>
         </div>
@@ -134,13 +134,22 @@
             </div>
           </form>
           <div class="todos application__todos">
-            <div class="todos-contaner">
+            <div class="todos-container">
               <div class="todos__item todos__item_done">
+                <div class="todos__item-status"></div>
+                <p class="todos__item-title">
+                  Some title gggggggggggggggggggggggggggggggggggg
+                </p>
+                <div class="todos__item-edit"></div>
+                <div class="todos__item-remove"></div>
+              </div>
+              <div class="todos__item">
                 <div class="todos__item-status"></div>
                 <p class="todos__item-title">Some title</p>
                 <div class="todos__item-edit"></div>
                 <div class="todos__item-remove"></div>
               </div>
+              <p class="todos__notice">Nothing found</p>
             </div>
           </div>
           <div class="application__theme theme">
@@ -170,8 +179,30 @@
         <button class="btn application__btn" id="create-btn"></button>
       </main>
     </section>
+    <div id="create" class="modal hide">
+      <form class="modal-container">
+        <h2 class="modal__title">Add New</h2>
+        <div class="modal__field">
+          <input
+            class="modal__field-input"
+            type="text"
+            name="title"
+            placeholder="Title..."
+          />
+          <!-- <p class="form__field-warning">Field is requared</p> -->
+        </div>
+        <div class="modal__field">
+          <textarea
+            class="modal__field-textarea"
+            name="description"
+            placeholder="Description..."
+          ></textarea>
+        </div>
+        <button class="modal__btn btn" type="submit">Save</button>
+      </form>
+    </div>
 
-    <div id="edit" class="modal">
+    <div id="edit" class="modal invalid hide">
       <form class="modal-container">
         <h2 class="modal__title">Edit</h2>
         <div class="modal__field">
@@ -181,6 +212,7 @@
             name="title"
             placeholder="Title..."
           />
+          <!-- <p class="form__field-warning">Field is requared</p> -->
         </div>
         <div class="modal__field">
           <textarea

@@ -1,0 +1,73 @@
+.todos {
+  &-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    border: 1px solid $border-color;
+    width: 100%;
+    min-width: 400px;
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    background-color: $bg-color;
+    color: $border-color;
+    padding: 20px;
+    margin-bottom: 15px;
+    gap: 10px;
+    &-title {
+      font-size: $sub-text-large;
+      width: 100%;
+      min-width: 50px;
+      max-width: 350px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-status,
+    &-edit,
+    &-remove {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      flex-shrink: 0;
+    }
+    &-status {
+      background-image: url("./../../../assets/check.png");
+      background-color: $bg-color-white;
+    }
+    &-edit {
+      background-image: url("./../../../assets/pen.png");
+      visibility: hidden;
+    }
+    &-remove {
+      background-image: url("./../../../assets/remove.png");
+      visibility: hidden;
+    }
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 4px 5px $border-color;
+      .todos__item-edit,
+      .todos__item-remove {
+        visibility: visible;
+      }
+    }
+    &_done {
+      text-decoration: line-through $input-color;
+      .todos__item-status {
+        background-color: $bgcolor-done;
+      }
+    }
+  }
+  &__notice {
+    font-size: $text-large;
+    text-align: center;
+  }
+}

@@ -1,0 +1,33 @@
+.form-search {
+  &__field {
+    max-width: 280px;
+    height: 45px;
+    margin-bottom: 15px;
+    &-input,
+    &-select {
+      width: 100%;
+      height: 100%;
+      color: $secondary-btn-color;
+      border: 1.5px solid $border-color;
+      border-radius: 15px;
+      padding: 0 10px;
+      font-size: $sub-text-large;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 4px 1px $label-color;
+      }
+    }
+    &-input {
+      &::placeholder {
+        color: $secondary-btn-color;
+      }
+    }
+    &-select {
+      cursor: pointer;
+      &-option {
+        font-size: inherit;
+        display: block;
+      }
+    }
+  }
+}
