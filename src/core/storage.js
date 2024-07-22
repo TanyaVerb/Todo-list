@@ -22,7 +22,7 @@ export class Storage {
 
       //извлекает существующий список пользователей из localStorage.
       // и добавляет userData к списку пользователей.
-      const existUsers = JSON.parse(localStorage.getItem("users"));
+      const existUsers = getAllUsersFromLocalStorage();
       localStorage.setItem("users", JSON.stringify([...existUsers, userData]));
     }
     // сохраняет обновленный список пользователей в localStorage
@@ -30,13 +30,30 @@ export class Storage {
 
     //вызов уведомления о создании пользователя
     notification.show("Account is created");
+    return userData.id;
+  }
+  static enterTodoList(login) {
+    const existUsers = getAllUsersFromLocalStorage();
+    const user = existUsers.find(({ name, password }) => {
+      return name === login.name && password === login.password;
+    });
+    console.log(user);
+    if (user) {
+      notification.show("Successfull autorization");
+      return user.id;
+    } else {
+      notification.show("Incorrect login or password");
+    }
+  }
+  static getUserData() {
+    return findUserData();
   }
 }
 
 function checkUserExist(userData) {
   let isUser = false;
   //получаем уже существующих пользователей - массив поль-ей
-  const existUsers = JSON.parse(localStorage.getItem("users"));
+  const existUsers = getAllUsersFromLocalStorage();
 
   //в массиве делаем проверку на  соотвествие значений username и email
   //деструктуризация
@@ -49,4 +66,22 @@ function checkUserExist(userData) {
   });
 
   return isUser;
+}
+
+function getAllUsersFromLocalStorage() {
+  const existUsers = localStorage.getItem("users")
+    ? JSON.parse(localStorage.getItem("users"))
+    : [];
+  return existUsers;
+}
+
+//ищем текущего пользователя
+function findUserData() {
+  const userId = JSON.parse(localStorage.getItem("selectedUserId"));
+  if (userId) {
+    const users = getAllUsersFromLocalStorage();
+    return users.find((user) => {
+      return user.id === userId;
+    });
+  }
 }

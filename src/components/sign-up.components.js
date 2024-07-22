@@ -2,10 +2,12 @@ import { Component } from "../core/component.js";
 import { Form } from "../core/form.js";
 import { Validator } from "../core/validator.js";
 import { Storage } from "../core/storage.js";
+import { pageContent } from "../index.js";
 
 export class SigUpComponent extends Component {
-  constructor(formId) {
+  constructor(formId, page) {
     super(formId);
+    this.page = page;
   }
 
   init() {
@@ -31,7 +33,7 @@ function onSubmitHandler(event) {
 
   //проверяем валидна ли форма
   if (this.form.isValid()) {
-    //усли форма валидна - создаем пользователя
+    //eсли форма валидна - создаем пользователя
     const formData = {
       id: new Date().getTime(),
       ...this.form.value(),
@@ -42,9 +44,22 @@ function onSubmitHandler(event) {
     //   email:
     //   password
     // }
+
     console.log(formData);
-    Storage.createNewUser(formData);
+
+    this.form.clear();
+    const userId = Storage.createNewUser(formData);
     //очищаем форму после создания пользователя
-    // this.form.clear();
+
+    console.log(userId);
+
+    if (!userId) return;
+    localStorage.setItem("selectedUserId", userId);
+    //скрываем страницу авторизации
+    setTimeout(() => {
+      this.page.classList.add("hide");
+      //раскрыть страницу списка дел
+      pageContent.show();
+    }, 2500);
   }
 }

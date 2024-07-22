@@ -11,8 +11,8 @@ export class PageAuthorization extends Component {
 
   init() {
     // инициализируем формы
-    this.signIn = new SignInComponent("sign-in");
-    this.signUp = new SigUpComponent("sign-up");
+    this.signIn = new SignInComponent("sign-in", this.component);
+    this.signUp = new SigUpComponent("sign-up", this.component);
     // получаем ссылки
     this.links = this.component.querySelectorAll(".form__link");
 
