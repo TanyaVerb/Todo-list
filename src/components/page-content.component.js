@@ -1,6 +1,6 @@
 import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
-import { FormCreatePostModal } from "./modals/create-form.component.js";
+import { formCreatePostModal } from "../index.js";
 
 export class PageContent extends Component {
   constructor(id, pageAuthorization) {
@@ -31,5 +31,5 @@ function onLogoutHandler() {
 }
 
 function onShowFormCreatePostHandler() {
-  console.log("ccc");
+  formCreatePostModal.show();
 }
