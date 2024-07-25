@@ -33,7 +33,7 @@ function onSubmitHandler(event) {
 
   //проверяем валидна ли форма
   if (this.form.isValid()) {
-    //eсли форма валидна - создаем пользователя
+    //если форма валидна - создаем пользователя
     const formData = {
       id: new Date().getTime(),
       ...this.form.value(),

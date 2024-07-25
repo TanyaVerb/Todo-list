@@ -39,7 +39,7 @@ export class Storage {
     });
     console.log(user);
     if (user) {
-      notification.show("Successfull autorization");
+      notification.show("Successful authorization");
       return user.id;
     } else {
       notification.show("Incorrect login or password");
@@ -55,7 +55,7 @@ function checkUserExist(userData) {
   //получаем уже существующих пользователей - массив поль-ей
   const existUsers = getAllUsersFromLocalStorage();
 
-  //в массиве делаем проверку на  соотвествие значений username и email
+  //в массиве делаем проверку на  соответствие значений username и email
   //деструктуризация
   existUsers.forEach(({ name, email }) => {
     if (name === userData.name && email === userData.email) {

@@ -22,14 +22,15 @@ export class PageContent extends Component {
   }
 }
 
+// Обработчик события для кнопки "Logout".
 function onLogoutHandler() {
   console.log(this);
   this.hide();
-  localStorage.setItem("selectedUserId", null);
+  localStorage.setItem("selectedUserId", null); //Удаляет данные о текущем пользователе из localStorage
   console.log(localStorage.setItem("selectedUserId", null));
-  this.pageAuthorization.show();
+  this.pageAuthorization.show(); //Отображает компонент pageAuthorization
 }
-
+//Обработчик события для кнопки "Create"
 function onShowFormCreatePostHandler() {
-  formCreatePostModal.show();
+  formCreatePostModal.show(); //Отображает модальное окно
 }
