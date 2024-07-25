@@ -61,7 +61,11 @@ function setNoticeError(input) {
 
   const fieldName = input.getAttribute("name");
 
-  if (fieldName === "name") {
+  if (
+    fieldName === "name" ||
+    fieldName === "title" ||
+    fieldName === "description"
+  ) {
     input.insertAdjacentHTML("afterend", setErrorText(requiredErrorText));
   }
   if (fieldName === "email") {
@@ -81,6 +85,11 @@ function clearNoticeError(input) {
   if (input.nextElementSibling) {
     if (input.closest(".form__field")) {
       input.closest(".form__field").removeChild(input.nextElementSibling);
+
+      input.parentElement.classList.remove("invalid");
+    }
+    if (input.closest(".modal__field")) {
+      input.closest(".modal__field").removeChild(input.nextElementSibling);
       input.parentElement.classList.remove("invalid");
     }
   }

@@ -48,6 +48,25 @@ export class Storage {
   static getUserData() {
     return findUserData();
   }
+  static createPost(postData) {
+    const existUsers = getAllUsersFromLocalStorage();
+    const currentUser = findUserData(); //{}
+    const updateUser = {
+      ...currentUser,
+      todoList: [...currentUser.todoList, postData],
+    };
+    const indexCurrentUser = existUsers.findIndex(
+      (user) => user.id === currentUser.id
+    );
+    const updateUsersArray = [
+      ...existUsers.slice(0, indexCurrentUser),
+      updateUser,
+      ...existUsers.slice(0, indexCurrentUser + 1),
+    ];
+    console.log(updateUsersArray);
+    localStorage.setItem("users", JSON.stringify(updateUsersArray));
+    notification.show("Post created");
+  }
 }
 
 function checkUserExist(userData) {

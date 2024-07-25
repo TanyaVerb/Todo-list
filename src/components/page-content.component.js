@@ -1,6 +1,7 @@
 import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
 import { formCreatePostModal } from "../index.js";
+import { renderPosts } from "../teamplate/render-post.js";
 
 export class PageContent extends Component {
   constructor(id, pageAuthorization) {
@@ -15,10 +16,14 @@ export class PageContent extends Component {
       "click",
       onShowFormCreatePostHandler.bind(this)
     );
+    this.todoList = document.querySelector(".todos-container");
     this.welcome = document.getElementById("welcome");
   }
   onShow() {
+    this.todoList.innerHTML = "";
     this.welcome.innerText = Storage.getUserData().name;
+    const postsElements = renderPosts();
+    this.todoList.insertAdjacentHTML("afterbegin", postsElements);
   }
 }
 

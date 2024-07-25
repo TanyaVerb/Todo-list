@@ -38,6 +38,8 @@
     margin-bottom: 10px;
   }
   &__field {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-bottom: 10px;
     & + & {
@@ -70,21 +72,21 @@
       height: 100%;
       resize: none;
     }
-  }
-  &.invalid {
-    .modal__field-input,
-    .modal__field-textarea {
-      color: $invalid-color;
-      box-shadow: 0 0 10px 1px $invalid-color;
-    }
-    .form__field-warning {
-      color: $invalid-color;
-      font-size: $sub-text-large;
-      @include respond-to("middle") {
-        font-size: $sub-text-middle;
+    &.invalid {
+      .modal__field-input,
+      .modal__field-textarea {
+        color: $invalid-color;
+        box-shadow: 0 0 10px 1px $invalid-color;
       }
-      @include respond-to("mobile") {
-        font-size: $sub-text-mobile;
+      .form__field-warning {
+        color: $invalid-color;
+        font-size: $sub-text-large;
+        @include respond-to("middle") {
+          font-size: $sub-text-middle;
+        }
+        @include respond-to("mobile") {
+          font-size: $sub-text-mobile;
+        }
       }
     }
   }

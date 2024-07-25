@@ -37,6 +37,7 @@ function onSubmitHandler(event) {
     const formData = {
       id: new Date().getTime(),
       ...this.form.value(),
+      todoList: [],
     };
 
     // {
