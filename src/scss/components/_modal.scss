@@ -29,6 +29,12 @@
       max-height: 400px;
       font-size: $text-middle;
     }
+
+    &_info {
+      height: min-content;
+      gap: 25px;
+      overflow: auto; //когда контент больше контейнера
+    }
   }
   &__title {
     color: $input-color;

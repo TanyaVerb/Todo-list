@@ -67,6 +67,26 @@ export class Storage {
     localStorage.setItem("users", JSON.stringify(updateUsersArray));
     notification.show("Post created");
   }
+
+  static getPostInfo(todoId) {
+    const currentUser = findUserData();
+    console.log(todoId);
+    return currentUser.todoList.find(
+      (item) => Number(item.id) === Number(todoId)
+    );
+    const updateUser = {
+      ...currentUser,
+      todoList: [...currentUser.todoList, postData],
+    };
+  }
+
+  static removeTodo(todoId) {
+    const existUsers = getAllUsersFromLocalStorage();
+    const currentUser = findUserData();
+    const updateUserPosts = currentUser.todoList.filter(
+      (todo) => Number(todo.id) !=== Number(todoId)
+    );
+  }
 }
 
 function checkUserExist(userData) {
@@ -103,4 +123,8 @@ function findUserData() {
       return user.id === userId;
     });
   }
+}
+
+function updateLocalStorage(updateUser){
+
 }

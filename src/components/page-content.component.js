@@ -2,6 +2,7 @@ import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
 import { formCreatePostModal } from "../index.js";
 import { renderPosts } from "../teamplate/render-post.js";
+import { postInfoModal } from "./modals/todo-info.componenents.js";
 
 export class PageContent extends Component {
   constructor(id, pageAuthorization) {
@@ -24,6 +25,10 @@ export class PageContent extends Component {
     this.welcome.innerText = Storage.getUserData().name;
     const postsElements = renderPosts();
     this.todoList.insertAdjacentHTML("afterbegin", postsElements);
+    this.items = this.todoList.querySelectorAll(".todos__item");
+    Array.from(this.items).forEach((item) =>
+      item.addEventListener("click", onTodoHandler)
+    );
   }
 }
 
@@ -38,4 +43,21 @@ function onLogoutHandler() {
 //Обработчик события для кнопки "Create"
 function onShowFormCreatePostHandler() {
   formCreatePostModal.show(); //Отображает модальное окно
+}
+
+function onTodoHandler(e) {
+  const todoId = this.dataset.todoId;
+  console.log(todoId);
+  if (e.target.classList.contains("todos__item")) {
+    postInfoModal.show(todoId);
+  }
+  if (e.target.classList.contains("todos__item-status")) {
+    console.log("todos__item-status");
+  }
+  if (e.target.classList.contains("todos__item-edit")) {
+    console.log("todos__item-edit");
+  }
+  if (e.target.classList.contains("todos__item-remove")) {
+    Storage.removeTodo(todoId);
+  }
 }

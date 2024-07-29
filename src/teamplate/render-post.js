@@ -8,9 +8,9 @@ export const renderPosts = () => {
   const todosForRender = todoList
     .map((todo) => {
       const style = todo.status === "done" ? "_done" : "";
-
+      // console.log(todo.id);
       return `
- <div class="todos__item todos__item${style}">
+ <div class="todos__item todos__item${style} data-todo-id=${todo.id}">
                 <div class="todos__item-status"></div>
                 <p class="todos__item-title"> ${todo.title}</p>
                 <div class="todos__item-edit"></div>
