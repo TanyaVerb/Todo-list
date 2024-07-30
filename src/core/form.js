@@ -11,7 +11,7 @@ export class Form {
     const value = {};
     //итерация по всем полям формы
     Object.keys(this.controls).forEach((field) => {
-      value[field] = this.form[field].value; //значение из соотв,элемента формы
+      value[field] = this.form[field].value; //значение из соотв.элемента формы
     });
     return value;
   }

@@ -1,5 +1,6 @@
 import { Storage } from "../core/storage.js";
 
+//todoId-  ID задачи, которую нужно отобразить
 export const renderPostInfo = (todoId) => {
   const todo = Storage.getPostInfo(todoId);
 

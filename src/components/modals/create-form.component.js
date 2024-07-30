@@ -48,7 +48,7 @@ function onSubmitPostHandler(e) {
     Storage.createPost(formData);
     //скрываем модалку
     this.hide();
-    //вызываем pageContent.show
+    // вызываем pageContent.show() чтобы дополнительно запустить pageContent.onShow()
     pageContent.show();
   }
 }

@@ -1,105 +1,84 @@
 import { notification } from "../index.js";
-//userData-объект с данными пользователя
+
 export class Storage {
   static createNewUser(userData) {
-    // const user = {
-    //   id: 1,
-    //   name: "Vlad",
-    //   email: "vlad@.ru",
-    //   password: "1Q",
-    // };
     if (!localStorage.getItem("users")) {
       localStorage.setItem("users", JSON.stringify([userData]));
     } else {
-      //проверяем существует ли такой пользователь
+      // проверяем существует ли такой пользователь
       if (checkUserExist(userData)) {
-        //если пользователя нету - выходим из функции и ничего не создаем
-        //вызов уведомления о том, что такой пользователь уже существует
-        notification.show("This user already exist");
-
+        // если пользователя нету - выходим из функции и ничего не создаем
+        // вызов уведомления о том, что такой пользователь уже существует
+        notification.show("This use already exist");
         return;
       }
-
-      //извлекает существующий список пользователей из localStorage.
-      // и добавляет userData к списку пользователей.
+      // иначе записываем в localStorage уже существующих пользователей + добавляем нового
       const existUsers = getAllUsersFromLocalStorage();
       localStorage.setItem("users", JSON.stringify([...existUsers, userData]));
     }
-    // сохраняет обновленный список пользователей в localStorage
-    const value = JSON.parse(localStorage.getItem("users"));
 
-    //вызов уведомления о создании пользователя
+    // вызов уведомления о создание пользователя
     notification.show("Account is created");
     return userData.id;
   }
+  //возвращает id созданного пользователя
   static enterTodoList(login) {
     const existUsers = getAllUsersFromLocalStorage();
+    //ищет пользователя по имени и паролю
     const user = existUsers.find(({ name, password }) => {
       return name === login.name && password === login.password;
     });
-    console.log(user);
     if (user) {
-      notification.show("Successful authorization");
+      notification.show("Successful authorization"); //успешная авторизация
       return user.id;
     } else {
       notification.show("Incorrect login or password");
     }
   }
+  //Возвращает данные текущего пользователя из localStorage.
   static getUserData() {
     return findUserData();
   }
+
   static createPost(postData) {
-    const existUsers = getAllUsersFromLocalStorage();
-    const currentUser = findUserData(); //{}
+    const currentUser = findUserData(); //Получает данные текущего пользователя
     const updateUser = {
       ...currentUser,
-      todoList: [...currentUser.todoList, postData],
+      todoList: [...currentUser.todoList, postData], //Добавляет новый пост в список дел пользователя
     };
-    const indexCurrentUser = existUsers.findIndex(
-      (user) => user.id === currentUser.id
-    );
-    const updateUsersArray = [
-      ...existUsers.slice(0, indexCurrentUser),
-      updateUser,
-      ...existUsers.slice(0, indexCurrentUser + 1),
-    ];
-    console.log(updateUsersArray);
-    localStorage.setItem("users", JSON.stringify(updateUsersArray));
+    updateLocalStorage(updateUser); //Обновляет данные пользователя в localStorage.
     notification.show("Post created");
   }
 
   static getPostInfo(todoId) {
-    const currentUser = findUserData();
-    console.log(todoId);
+    const currentUser = findUserData(); //Получает данные текущего пользователя.
     return currentUser.todoList.find(
       (item) => Number(item.id) === Number(todoId)
-    );
-    const updateUser = {
-      ...currentUser,
-      todoList: [...currentUser.todoList, postData],
-    };
+    ); //Возвращает информацию о конкретном посте из списка дел пользователя по его идентификатору
   }
 
   static removeTodo(todoId) {
-    const existUsers = getAllUsersFromLocalStorage();
     const currentUser = findUserData();
     const updateUserPosts = currentUser.todoList.filter(
-      (todo) => Number(todo.id) !=== Number(todoId)
+      (todo) => Number(todo.id) !== Number(todoId)
     );
+    const updateUser = {
+      ...currentUser,
+      todoList: updateUserPosts,
+    }; //Удаляет пост из списка дел пользователя по его идентификатору.
+    updateLocalStorage(updateUser); //Обновляет данные пользователя в localStorage
   }
 }
 
 function checkUserExist(userData) {
   let isUser = false;
-  //получаем уже существующих пользователей - массив поль-ей
+  // получаем уже существующих пользователей - массив пользователей
   const existUsers = getAllUsersFromLocalStorage();
-
-  //в массиве делаем проверку на  соответствие значений username и email
-  //деструктуризация
+  // в массиве делаем проверку на соответствие значений username и email
   existUsers.forEach(({ name, email }) => {
     if (name === userData.name && email === userData.email) {
-      //если результат if будет true - значит такой пользователь есть
-      //поэтому меняем значение isUser на true
+      // если результат if будет true - значит такой пользователь есть
+      // поэтому меняе значение переменной isUser на true
       isUser = true;
     }
   });
@@ -107,6 +86,7 @@ function checkUserExist(userData) {
   return isUser;
 }
 
+//Получает всех пользователей из хранилища в localStorage
 function getAllUsersFromLocalStorage() {
   const existUsers = localStorage.getItem("users")
     ? JSON.parse(localStorage.getItem("users"))
@@ -114,7 +94,7 @@ function getAllUsersFromLocalStorage() {
   return existUsers;
 }
 
-//ищем текущего пользователя
+//Получает идентификатор текущего пользователя из localStorage и ищет пользователя по его идентификатору в хранилище.
 function findUserData() {
   const userId = JSON.parse(localStorage.getItem("selectedUserId"));
   if (userId) {
@@ -125,6 +105,16 @@ function findUserData() {
   }
 }
 
-function updateLocalStorage(updateUser){
-
+function updateLocalStorage(updateUser) {
+  const existUsers = getAllUsersFromLocalStorage(); //Получает всех пользователей из хранилища в localStorage
+  const currentUser = findUserData();
+  const indexCurrentUser = existUsers.findIndex(
+    (user) => user.id === currentUser.id
+  );
+  const updateUsersArray = [
+    ...existUsers.slice(0, indexCurrentUser),
+    updateUser,
+    ...existUsers.slice(indexCurrentUser + 1),
+  ]; //Обновляет данные пользователя в хранилище
+  localStorage.setItem("users", JSON.stringify(updateUsersArray)); // Сохраняет обновленное хранилище в localStorage
 }
