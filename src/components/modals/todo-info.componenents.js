@@ -19,7 +19,9 @@ export class PostInfoModal extends Component {
     const htmlInfo = renderPostInfo(todoId);
     this.component.insertAdjacentHTML("afterbegin", htmlInfo); //рендеринг(отрисовка) HTML-шаблона с информацией о записи, полученной по ID записи (todoId).
   }
-  onHide() {} //Скрывает модальное окно
+  onHide() {
+    this.component.innerHTML = "";
+  } //Скрывает модальное окно
 }
 
 function onCloseModalHandler(e) {

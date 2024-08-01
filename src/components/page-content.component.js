@@ -1,7 +1,13 @@
 import { Component } from "../core/component.js";
 import { Storage } from "../core/storage.js";
-import { formCreatePostModal, postInfoModal } from "../index.js";
+import {
+  confirmActionModal,
+  formCreatePostModal,
+  formEditPostModal,
+  postInfoModal,
+} from "../index.js";
 import { renderPosts } from "../template/render-posts.js";
+import {} from "../template/render-posts.js";
 
 export class PageContent extends Component {
   constructor(id, pageAuthorization) {
@@ -56,9 +62,10 @@ function onTodoHandler(e) {
     console.log("todos__item-status");
   }
   if (e.target.classList.contains("todos__item-edit")) {
-    console.log("todos__item-edit");
+    formEditPostModal.show(todoId);
   }
   if (e.target.classList.contains("todos__item-remove")) {
-    Storage.removeTodo(todoId);
+    // Storage.removeTodo(todoId);
+    confirmActionModal.show(todoId);
   }
 }

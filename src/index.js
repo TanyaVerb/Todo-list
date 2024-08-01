@@ -4,6 +4,8 @@ import { Notification } from "./components/modals/notification.component.js";
 import { PageContent } from "./components/page-content.component.js";
 import { FormCreatePostModal } from "./components/modals/create-form.component.js";
 import { PostInfoModal } from "./components/modals/todo-info.componenents.js";
+import { ConfirmActionModal } from "./components/modals/confirm-action.component.js";
+import { FormEditPostModal } from "./components/modals/edit-form.component.js";
 
 console.log(Validator.isEmailValid("tE@"));
 console.log(Validator.isPasswordValid("so me1   !tE  "));
@@ -12,6 +14,8 @@ const loginPage = new PageAuthorization("login");
 export const pageContent = new PageContent("page-content", loginPage);
 export const formCreatePostModal = new FormCreatePostModal("create");
 export const postInfoModal = new PostInfoModal("info");
+export const confirmActionModal = new ConfirmActionModal("confirm");
+export const formEditPostModal = new FormEditPostModal("edit");
 
 console.log(postInfoModal);
 
@@ -61,3 +65,44 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
 // // });
 
 // console.log(printReport(wareStore));
+
+// const arr1 = ["login", "email", "gender"];
+// const arr2 = ["user", "myEmail@mail.ru", "male or female"];
+
+// function foo(arr1, arr2) {
+//   // const obj= {}
+//   // for (item of arr1){
+//   //   obj
+//   // }
+
+//   const arr = arr1.map((el, index) => {
+//     return [el, arr2[index]];
+//   });
+//   // return {}
+//   console.log(arr);
+//   let arrNew = Object.fromEntries(arr);
+//   console.log(arrNew);
+// }
+
+// foo(arr1, arr2);
+// function foo(kyesArray, valueArray) {
+//   return kyesArray.reduce((acc, item, index) => {
+//     acc[item] = valueArray[index];
+//     return acc;
+//   }, {});
+// }
+// function foo2(kyesArray, valueArray) {
+//   const result = {};
+//   kyesArray.forEach((element, index, arr) => {
+//     result[el] = valueArray[index];
+//   });
+//   return result;
+// }
+// function foo3(kyesArray, valueArray) {
+//   const obj = {};
+//   obj[kyesArray];
+
+//   return obj;
+// }
+
+// console.log(foo2(arr1, arr2));

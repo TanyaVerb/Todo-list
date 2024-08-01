@@ -68,6 +68,22 @@ export class Storage {
     }; //Удаляет пост из списка дел пользователя по его идентификатору.
     updateLocalStorage(updateUser); //Обновляет данные пользователя в localStorage
   }
+  static editPost(todoId, formData) {
+    const currentUser = findUserData();
+    const indexEdiablePost = currentUser.todoList.findIndex(
+      (todo) => Number(todo.id) === Number(todoId)
+    );
+    const updateUser = {
+      ...currentUser,
+      todoList: [
+        ...currentUser.todoList.slice(0, indexEdiablePost),
+        formData,
+        ...currentUser.todoList.slice(indexEdiablePost + 1),
+      ],
+    };
+    updateLocalStorage(updateUser);
+    notification.show("Post changed");
+  }
 }
 
 function checkUserExist(userData) {

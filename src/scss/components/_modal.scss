@@ -30,7 +30,8 @@
       font-size: $text-middle;
     }
 
-    &_info {
+    &_info,
+    &_confirm {
       height: min-content;
       gap: 25px;
       overflow: auto; //когда контент больше контейнера
@@ -94,6 +95,47 @@
           font-size: $sub-text-mobile;
         }
       }
+    }
+  }
+
+  &__notice {
+    color: $border-color;
+    font-style: $sub-text-large;
+    font-weight: 600;
+    text-align: center;
+
+    @include respond-to("middle") {
+      font-size: $sub-text-middle;
+    }
+    @include respond-to("mobile") {
+      font-size: $sub-text-mobile;
+    }
+    &-name {
+      color: $invalid-color;
+      font-weight: 700;
+      font-size: $text-large;
+      @include respond-to("middle") {
+        font-size: $text-middle;
+      }
+      @include respond-to("mobile") {
+        font-size: $text-mobile;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 15px;
+    &-btn {
+      border: 1px solid $primary-btn-color;
+      padding: 8px;
+    }
+
+    &-btn_agree {
+      color: $primary-btn-color;
+    }
+    &_-btn_disagree {
+      color: $invalid-color;
     }
   }
 }
