@@ -35,20 +35,21 @@ export class PageContent extends Component {
 }
 
 function onLogoutHandler() {
-  this.hide();
-  localStorage.setItem("selectedUserId", null);
-  this.pageAuthorization.show();
+  this.hide(); //Скрывает текущий компонент
+  localStorage.setItem("selectedUserId", null); //Очищает selectedUserId в локальном хранилище.
+  this.pageAuthorization.show(); //Отображает компонент авторизации
 }
 
 function onShowFormCreatePostHandler() {
+  //Отображает модальное окно для создания поста
   formCreatePostModal.show();
 }
 
 function onTodoHandler(e) {
-  const todoId = this.dataset.todoId;
+  const todoId = this.dataset.todoId; //Получает идентификатор поста из dataset.todoId
 
   if (e.target.classList.contains("todos__item")) {
-    postInfoModal.show(todoId);
+    postInfoModal.show(todoId); //Отображает модальное окно с информацией о посте
   }
 
   if (e.target.classList.contains("todos__item-status")) {
