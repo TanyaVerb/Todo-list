@@ -87,20 +87,27 @@ export class Storage {
   }
 
   //****************/
-  static donePost(todoId, formData) {
+  static updateTodoStatus(todoId) {
     const currentUser = findUserData(); //Получает данные текущего пользователя.
-    const indexDonePost = currentUser.todoList.findIndex(
-      (todo) => Number(todo.id) === Number(todoId)
-    );
-    const updateUser = {
-      ...currentUser,
-      todoList: [
-        ...currentUser.todoList.slice(0, indexDonePost),
-        formData,
-        ...currentUser.todoList.slice(indexDonePost + 1),
-      ],
-    };
-    updateLocalStorage(updateUser);
+    // const indexDonePost = currentUser.todoList.findIndex(
+    //   (todo) => Number(todo.id) === Number(todoId)
+    // );
+    // const updateUser = {
+    //   ...currentUser,
+    //   todoList: [
+    //     ...currentUser.todoList.slice(0, indexDonePost),
+    //     formData,
+    //     ...currentUser.todoList.slice(indexDonePost + 1),
+    //   ],
+    // };
+    // updateLocalStorage(updateUser);
+    currentUser.todoList.forEach((post) => {
+      if (Number(post.id) === Number(todoId)) {
+        post.status = post.status === "done" ? "processing" : "done";
+      }
+    });
+    updateLocalStorage(currentUser);
+    console.log(currentUser);
   }
 }
 

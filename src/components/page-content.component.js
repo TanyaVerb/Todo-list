@@ -65,15 +65,15 @@ function onTodoHandler(e) {
 
     // Обновление хранилища
     //обновленный объект
-    const updatedPost = {
-      ...Storage.getPostInfo(todoId), //оператор spread(разворачивания)создает копию полученных данных
-      status: this.classList.contains("todos__item_done")
-        ? "done"
-        : "processing",
-    };
+    // const updatedPost = {
+    //   ...Storage.getPostInfo(todoId), //оператор spread(разворачивания)создает копию полученных данных
+    //   status: this.classList.contains("todos__item_done")
+    //     ? "done"
+    //     : "processing",
+    // };
     // Storage.editPost(todoId, updatedPost);
     //сохраняем обновленные данные поста в локальное хранилище
-    Storage.donePost(todoId, updatedPost);
+    Storage.updateTodoStatus(todoId);
   }
   if (e.target.classList.contains("todos__item-edit")) {
     formEditPostModal.show(todoId);

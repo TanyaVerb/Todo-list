@@ -106,3 +106,84 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
 // }
 
 // console.log(foo2(arr1, arr2));
+
+// const forTestArr = [
+//   { role: "admin", status: "online" },
+//   { role: "user", status: "online" },
+//   { role: "user", status: "online" },
+//   { role: "admin", status: "online" },
+//   { name: "Vlad", age: "32" },
+//   { name: "BMV", age: "32" },
+// ];
+
+// function filterByKey(key, arr) {
+//   const arrNew = arr.filter(function (obj) {
+//     if (obj.hasOwnProperty(key)) {
+//       return true;
+//     } else {
+//       return null;
+//     }
+//   });
+
+//   return arrNew.length ? arrNew : null;
+// }
+// // filterByKey("key", arr);
+// console.log(filterByKey("nffame", forTestArr));
+
+// function filterByRole(role, arr) {
+//   return arr.filter((el) => el.role === role);
+// }
+
+// // filterByRole("user", arr);
+
+// function filterByStatus(status, arr) {
+//   const arrNew = arr.filter((obj) => {
+//     if (obj) {
+//     }
+//   });
+// }
+
+// console.log(filterByStatus("online", forTestArr));
+// //------------------------------------
+
+// const arr1 = ["opel", "bmw", "audi", "mazda", "nissan", "mercedes"];
+// const str = "bmw";
+
+// const arr2 = ["bmw", "mercedes"];
+
+// function foo(arr1, str) {
+//   const arrNew = arr1.filter((el) => {
+//     if (el !== str) {
+//       return true;
+//     }
+//   });
+//   return arrNew;
+// }
+
+// console.log(foo(arr1, str));
+// //=================================
+
+// function fooTemp1(arr1, arr2) {
+//   return arr1.filter((el) => {
+//     return !arr2.find((item) => item === el);
+//   });
+// }
+
+// console.log(fooTemp1(arr1, arr2));
+
+// const forTestArr2 = [
+//   { role: "admin", status: "online" },
+//   { role: "user", status: "online" },
+//   { role: "user", status: "online" },
+//   { role: "admin", status: "online" },
+//   { name: "Vlad", age: "32" },
+//   { name: "Sveta", age: "32" },
+//   { name: "Anna", age: "32" },
+//   { name: "BMV", age: "32" },
+// ];
+
+// function fooTemp(arr, value) {
+//   return arr.find((el) => el.name == value);
+// }
+
+// console.log(fooTemp(forTestArr2, "Vlad"));
