@@ -21,7 +21,7 @@ export class Storage {
     notification.show("Account is created");
     return userData.id;
   }
-  //возвращает id созданного пользователя
+  //возвращает id созданного пользователя/login-это formData({}c данными из формы)
   static enterTodoList(login) {
     const existUsers = getAllUsersFromLocalStorage();
     //ищет пользователя по имени и паролю
@@ -41,6 +41,7 @@ export class Storage {
   }
 
   static createPost(postData) {
+    // postData.status = "processing"; //************* */
     const currentUser = findUserData(); //Получает данные текущего пользователя
     const updateUser = {
       ...currentUser,
@@ -83,6 +84,23 @@ export class Storage {
     };
     updateLocalStorage(updateUser);
     notification.show("Post changed");
+  }
+
+  //****************/
+  static donePost(todoId, formData) {
+    const currentUser = findUserData(); //Получает данные текущего пользователя.
+    const indexDonePost = currentUser.todoList.findIndex(
+      (todo) => Number(todo.id) === Number(todoId)
+    );
+    const updateUser = {
+      ...currentUser,
+      todoList: [
+        ...currentUser.todoList.slice(0, indexDonePost),
+        formData,
+        ...currentUser.todoList.slice(indexDonePost + 1),
+      ],
+    };
+    updateLocalStorage(updateUser);
   }
 }
 

@@ -6,6 +6,7 @@ import { pageContent } from "../index.js";
 
 export class SignInComponent extends Component {
   constructor(formId, page) {
+    //идентификатор формы и ссылка на страницу
     super(formId);
     this.page = page;
   }
@@ -19,7 +20,7 @@ export class SignInComponent extends Component {
   }
 
   onHide() {
-    this.form.clear();
+    this.form.clear(); //Метод, который очищает форму при скрытии компонента.
   }
 }
 //this - это форма
@@ -28,15 +29,16 @@ export class SignInComponent extends Component {
 function onSubmitHandler(event) {
   event.preventDefault(); //Предотвращает стандартное поведение отправки формы
   if (this.form.isValid()) {
+    //Создается объект formData, содержащий данные из формы.
     const formData = {
       ...this.form.value(),
     };
-    const userId = Storage.enterTodoList(formData);
+    const userId = Storage.enterTodoList(formData); //проверяем данные в  локальном хранилище и возвращает идентификатор пользователя, если вход успешен.
 
     console.log(userId);
 
     if (!userId) return;
-    localStorage.setItem("selectedUserId", userId);
+    localStorage.setItem("selectedUserId", userId); //Сохраняем идентификатор пользователя в локальное хранилище.и переходим на страницу со списком задач.
     //скрываем страницу авторизации
     setTimeout(() => {
       this.page.classList.add("hide");
