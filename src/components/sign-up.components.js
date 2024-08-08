@@ -38,6 +38,7 @@ function onSubmitHandler(event) {
       id: new Date().getTime(),
       ...this.form.value(),
       todoList: [],
+      theme: "gray",
     };
 
     // {

@@ -97,6 +97,15 @@ export class Storage {
     updateLocalStorage(currentUser);
     console.log(currentUser);
   }
+
+  static setTheme(theme) {
+    const currentUser = findUserData(); //Получает данные текущего пользователя
+    const updateUser = {
+      ...currentUser,
+      theme,
+    };
+    updateLocalStorage(updateUser); //Обновляет данные пользователя в localStorage.
+  }
 }
 
 function checkUserExist(userData) {

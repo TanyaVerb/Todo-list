@@ -7,6 +7,8 @@ import {
   postInfoModal,
 } from "../index.js";
 import { renderPosts } from "../template/render-posts.js";
+import { FormFiltersComponent } from "./form-filters.componrnt.js";
+import { ThemeComponent } from "./theme.component.js";
 
 export class PageContent extends Component {
   constructor(id, pageAuthorization) {
@@ -23,19 +25,24 @@ export class PageContent extends Component {
       onShowFormCreatePostHandler.bind(this)
     );
     this.todoList = document.querySelector(".todos-container");
-
+    this.filters = new FormFiltersComponent("search");
     this.welcome = document.getElementById("welcome");
+    this.theme = new ThemeComponent("theme", this.component);
   }
 
   onShow() {
     this.todoList.innerHTML = "";
+    this.component.classList.add(this.theme.value());
     this.welcome.innerText = Storage.getUserData().name; //имя пользователя
-    const postsElemtnts = renderPosts();
+    const postsElemtnts = renderPosts(this.filters.value());
     this.todoList.insertAdjacentHTML("afterbegin", postsElemtnts);
     this.items = this.todoList.querySelectorAll(".todos__item");
     Array.from(this.items).forEach(
       (item) => item.addEventListener("click", onTodoHandler) //Добавляем обработчик событий к каждому элементу поста для взаимодействия.
     );
+  }
+  onHide() {
+    this.filters.clear();
   }
 }
 

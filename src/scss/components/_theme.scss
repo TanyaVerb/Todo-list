@@ -16,3 +16,22 @@
     }
   }
 }
+
+.yellow {
+  .header-container,
+  .todos__item {
+    background-color: yellow;
+  }
+}
+.red {
+  .header-container,
+  .todos__item {
+    background-color: red;
+  }
+}
+.gray {
+  .header-container,
+  .todos__item {
+    background-color: #c7eeee;
+  }
+}

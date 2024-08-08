@@ -18,6 +18,7 @@ export const confirmActionModal = new ConfirmActionModal("confirm");
 export const formEditPostModal = new FormEditPostModal("edit");
 
 console.log(postInfoModal);
+console.log(pageContent);
 
 export const notification = new Notification("notification");
 
@@ -187,3 +188,33 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
 // }
 
 // console.log(fooTemp(forTestArr2, "Vlad"));
+
+//нужно создать функцию sum
+
+// const arr = [2, "dwa", {}, null, false, 5, 1];
+
+// function sum(arr) {
+//   let res = arr.reduce(function (sum, elem) {
+//     if (typeof elem == "number") {
+//       return sum + elem;
+//     }
+//     return sum;
+//   }, 0);
+//   return res;
+// }
+// const sum = (arr) =>
+//   arr.reduce((sum, elem) => (typeof elem == "number" ? sum + elem : sum), 0);
+
+// console.log(sum(arr));
+
+// function sum2(arr) {
+//   let sum = 0;
+//   arr.forEach((item) => {
+//     if (typeof elem == "number") {
+//       sum += item;
+//     }
+//   });
+//   return sum;
+// }
+
+// console.log(sum2(arr));
