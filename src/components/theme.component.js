@@ -9,22 +9,23 @@ export class ThemeComponent extends Component {
 
   init() {
     if (Storage.getUserData()) {
-      this.component.value = Storage.getUserData().theme;
+      //Проверяем, есть ли данные пользователя в локальном хранилище
+      this.component.value = Storage.getUserData().theme; //если данные есть, устанавливает значение value компонента как значение темы из данных пользователя
     } else {
-      this.component.value = "gray";
+      this.component.value = "gray"; //если данных нет, устанавливает value как "gray"
     }
 
     this.component.addEventListener("change", onThemeHandler.bind(this));
   }
   value() {
-    return this.component.value;
+    return this.component.value; //Метод, который возвращает текущее значение компонента
   }
 }
 
 function onThemeHandler(e) {
   console.log(e.target.value);
-  Storage.setTheme(e.target.value);
-  const classList = this.pageContent.classList;
+  Storage.setTheme(e.target.value); // сохраняем выбранную тему в локальном хранилище
+  const classList = this.pageContent.classList; //получаем список классов элемента pageContent.
   console.log(classList);
 
   Array.from(classList).forEach((cls) => {
