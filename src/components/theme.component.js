@@ -5,6 +5,7 @@ export class ThemeComponent extends Component {
   constructor(id, pageContent) {
     super(id);
     this.pageContent = pageContent;
+    this.component.addEventListener("change", onThemeHandler.bind(this));
   }
 
   init() {
@@ -14,10 +15,11 @@ export class ThemeComponent extends Component {
     } else {
       this.component.value = "gray"; //если данных нет, устанавливает value как "gray"
     }
-
-    this.component.addEventListener("change", onThemeHandler.bind(this));
   }
   value() {
+    const { theme } = Storage.getUserData();
+    this.component.value = theme;
+    this.pageContent.classList.remove("grey", "yellow", "red");
     return this.component.value; //Метод, который возвращает текущее значение компонента
   }
 }

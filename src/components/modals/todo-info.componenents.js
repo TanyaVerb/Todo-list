@@ -2,7 +2,7 @@ import { Component } from "../../core/component.js";
 import { Form } from "../../core/form.js";
 import { Storage } from "../../core/storage.js";
 import { Validator } from "../../core/validator.js";
-import { pageContent } from "../../index.js";
+import { originUrl, pageContent } from "../../index.js";
 import { renderPostInfo } from "../../template/render-post-info.js";
 
 export class PostInfoModal extends Component {
@@ -15,9 +15,11 @@ export class PostInfoModal extends Component {
   }
   //Отображает модальное окно с информацией о записи
   onShow(todoId) {
-    this.component.innerHTML = "";
-    const htmlInfo = renderPostInfo(todoId);
-    this.component.insertAdjacentHTML("afterbegin", htmlInfo); //рендеринг(отрисовка) HTML-шаблона с информацией о записи, полученной по ID записи (todoId).
+    if (location.href.includes(todoId) && Storage.getPostInfo(todoId)) {
+      this.component.innerHTML = "";
+      const htmlInfo = renderPostInfo(todoId);
+      this.component.insertAdjacentHTML("afterbegin", htmlInfo); //рендеринг(отрисовка) HTML-шаблона с информацией о записи, полученной по ID записи (todoId).
+    }
   }
   onHide() {
     this.component.innerHTML = "";
@@ -31,6 +33,7 @@ function onCloseModalHandler(e) {
   let isTargetToClose = target == this.component || target == okeyBtn; //Проверяет, был ли клик по фоновому элементу модального окна (this.component).
 
   if (isTargetToClose) {
+    history.pushState(null, null, originUrl);
     this.hide();
   }
   console.log(target);

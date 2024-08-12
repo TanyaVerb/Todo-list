@@ -9,6 +9,8 @@ import { FormEditPostModal } from "./components/modals/edit-form.component.js";
 
 console.log(Validator.isEmailValid("tE@"));
 console.log(Validator.isPasswordValid("so me1   !tE  "));
+export const originUrl = window.location.href;
+console.log(originUrl);
 
 const loginPage = new PageAuthorization("login");
 export const pageContent = new PageContent("page-content", loginPage);
@@ -29,6 +31,13 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
   pageContent.show();
 }
 
+window.addEventListener("popstate", function (e) {
+  const userId = JSON.parse(this.localStorage.getItem("selectedUserId"));
+  console.log(e);
+  if (e.state && userId) {
+    postInfoModal.show(e.state);
+  }
+});
 //====================================================
 // const wareStore = {
 //   jackets: "empty",
@@ -218,3 +227,67 @@ if (JSON.parse(localStorage.getItem("selectedUserId"))) {
 // }
 
 // console.log(sum2(arr));
+//========================================================================
+
+// const obj = {
+//   name: "Vlad",
+//   age: 32,
+//   sayHi() {
+//     console.log("Hello", this.name);
+//   },
+//   empty: undefined,
+//   car: undefined,
+// };
+
+// console.log(Object.values(obj));
+// console.log(Object.entries(obj));
+
+// function transformData(obj) {
+//   const arrNew = Object.entries(obj);
+//   let result = arrNew.map((item) => {
+
+//   });
+//   return result;
+// }
+
+// console.log(transformData(obj));
+
+// function transformData(obj) {
+//   const result = {};
+//   for (let key in obj) {
+//     if (obj[key] === undefined) {
+//       result[key] = "пусто";
+//     } else {
+//       result[key] = obj[key];
+//     }
+//     return result;
+//   }
+// }
+// console.log(transformData(obj));
+
+// function transformData2(obj) {
+//   const result = Object.keys(obj).reduce((acc, key) => {
+//     if (obj[key] === undefined) {
+//       acc[key] = "пусто";
+//       return acc;
+//     } else {
+//       acc[key] = obj[key];
+//       return acc;
+//     }
+//   }, {});
+//   return result;
+// }
+// console.log(transformData2(obj));
+
+// function transformData3(obj) {
+//   const result = Object.entries(obj).map(([key, value]) => {
+//     if (value === undefined) {
+//       return [key, "пусто"];
+//     } else {
+//       return [key, value];
+//     }
+//   });
+//   return Object.fromEntries(result);
+// }
+
+// console.log(transformData3(obj));

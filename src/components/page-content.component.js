@@ -61,6 +61,7 @@ function onTodoHandler(e) {
   const todoId = this.dataset.todoId; //Получает идентификатор поста из dataset.todoId (например, data-todo-id="1722292484214")
 
   if (e.target.classList.contains("todos__item")) {
+    history.pushState(todoId, null, `${location.origin}/todos/${todoId}`);
     postInfoModal.show(todoId); //Отображает модальное окно с информацией о посте
   }
 
