@@ -623,6 +623,21 @@
           box-shadow: 0 0 4px 1px #99befa;
 }
 
+.yellow .header-container,
+.yellow .todos__item {
+  background-color: yellow;
+}
+
+.red .header-container,
+.red .todos__item {
+  background-color: red;
+}
+
+.gray .header-container,
+.gray .todos__item {
+  background-color: #c7eeee;
+}
+
 .application__title {
   color: #7a7a7a;
   font-size: 2.3rem;
